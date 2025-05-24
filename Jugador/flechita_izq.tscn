@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddii2p3ivyk2a"]
+
+[ext_resource type="Script" uid="uid://di3o0881dq54u" path="res://fleZiq.gd" id="1_528or"]
+[ext_resource type="Texture2D" uid="uid://q5avwba63v06" path="res://img/Shipi/flechitaDer-removebg-preview-removebg-preview.png" id="2_n7may"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vf71"]
+size = Vector2(202.75, 22)
+
+[node name="flechita_izq" type="Area2D" groups=["flecha"]]
+position = Vector2(426, 282)
+script = ExtResource("1_528or")
+
+[node name="FlechitaDer-removebg-preview-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-2, -4)
+scale = Vector2(0.422, 0.434)
+texture = ExtResource("2_n7may")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_7vf71")

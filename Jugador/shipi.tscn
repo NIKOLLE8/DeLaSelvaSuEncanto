@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://heykvxrg7jig"]
+
+[ext_resource type="Texture2D" uid="uid://bkw71hgbjpot4" path="res://img/Shipi/shipivitooño-removebg-preview.png" id="1_6akru"]
+[ext_resource type="Script" uid="uid://bd4qbsgdv4hay" path="res://Jugador/shipi.gd" id="1_i53pg"]
+[ext_resource type="AudioStream" uid="uid://phrxkxntnkwn" path="res://img/Fondos/flecha.mp3" id="3_nuq0y"]
+[ext_resource type="AudioStream" uid="uid://b861nsmu4tv3v" path="res://img/Fondos/shipibo_colision.mp3" id="4_gdotp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_862i6"]
+radius = 54.0
+height = 262.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edp2a"]
+size = Vector2(92, 249)
+
+[node name="Shipi" type="CharacterBody2D" groups=["shipi"]]
+position = Vector2(284, 343)
+script = ExtResource("1_i53pg")
+
+[node name="Coliship" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -2.75)
+shape = SubResource("CapsuleShape2D_862i6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, -9)
+shape = SubResource("RectangleShape2D_edp2a")
+
+[node name="Shipivitooño-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-10.5, -33.75)
+scale = Vector2(0.477578, 0.501789)
+texture = ExtResource("1_6akru")
+
+[node name="punto de disparo" type="Marker2D" parent="."]
+
+[node name="shoot_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nuq0y")
+
+[node name="colision_shipibo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gdotp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

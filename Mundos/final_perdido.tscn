@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6gm6oynkygbf"]
+
+[ext_resource type="Script" uid="uid://lu6g6eiysqe1" path="res://Mundos/final_perdido.gd" id="1_dkc15"]
+[ext_resource type="Texture2D" uid="uid://clbq4gkrrq6np" path="res://img/Fondos/JAJSJAjs.jpg" id="1_p3dih"]
+[ext_resource type="VideoStream" uid="uid://b1wr4qoiepaty" path="res://img/Fondos/FINAL_PERDIDO.ogv" id="2_ifiu7"]
+[ext_resource type="Texture2D" uid="uid://cgcrcktaso3fq" path="res://img/Fondos/INTENTALO DE NUEVO.png" id="3_2sbk0"]
+[ext_resource type="Texture2D" uid="uid://n1aavjhnpfe2" path="res://img/Fondos/hoja.png" id="5_3jept"]
+[ext_resource type="Script" uid="uid://cosejdr43uunf" path="res://Mundos/LevelGamer_over.gd" id="5_ph18p"]
+[ext_resource type="Script" uid="uid://dfo22vx4o8yqn" path="res://Mundos/PuntoGamer_over.gd" id="6_jghnb"]
+[ext_resource type="Texture2D" uid="uid://crdxj77rspdwl" path="res://img/Fondos/serpiente.png" id="6_na77p"]
+[ext_resource type="AudioStream" uid="uid://coag5j3j0dip2" path="res://img/Fondos/pipipipipi.mp3" id="9_01xw6"]
+
+[node name="final_perdido" type="Node2D"]
+script = ExtResource("1_dkc15")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(536, 366)
+scale = Vector2(0.5875, 0.690741)
+texture = ExtResource("1_p3dih")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -60.0
+offset_top = 30.0
+offset_right = 1860.0
+offset_bottom = 1118.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("2_ifiu7")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 311.0
+offset_top = 453.0
+offset_right = 1058.0
+offset_bottom = 665.0
+scale = Vector2(0.6, 0.6)
+icon = ExtResource("3_2sbk0")
+flat = true
+
+[node name="panel" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = 667.0
+offset_right = 1082.0
+offset_bottom = 726.0
+color = Color(0, 0, 0, 1)
+
+[node name="LevelGamer_over" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 10.0
+offset_right = 215.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 20
+text = "NIVEL"
+script = ExtResource("5_ph18p")
+
+[node name="PuntoGamer_over" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 10.0
+offset_right = 920.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 20
+text = "PUNTUACIÓN"
+script = ExtResource("6_jghnb")
+
+[node name="autores" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 24.0
+offset_right = 724.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 15
+text = "JULIO PEREZ   -   NIKOLLE ACUÑA"
+
+[node name="autores2" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 4.0
+offset_right = 560.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 15
+text = "HECHO POR"
+
+[node name="Sprite2D3" type="Sprite2D" parent="panel"]
+position = Vector2(1056, 42.5)
+scale = Vector2(0.519999, 0.575581)
+texture = ExtResource("5_3jept")
+
+[node name="Sprite2D2" type="Sprite2D" parent="panel"]
+position = Vector2(40.125, 34)
+scale = Vector2(0.433263, 0.561644)
+texture = ExtResource("6_na77p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_01xw6")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

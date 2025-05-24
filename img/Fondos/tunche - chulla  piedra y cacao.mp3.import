@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xwvp3jrbnhdo"
+path="res://.godot/imported/tunche - chulla  piedra y cacao.mp3-cee03553b7916bbc571beb9b1ea657eb.mp3str"
+
+[deps]
+
+source_file="res://img/Fondos/tunche - chulla  piedra y cacao.mp3"
+dest_files=["res://.godot/imported/tunche - chulla  piedra y cacao.mp3-cee03553b7916bbc571beb9b1ea657eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

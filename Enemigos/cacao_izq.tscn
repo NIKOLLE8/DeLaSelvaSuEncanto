@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7hxed2athmt"]
+
+[ext_resource type="Script" uid="uid://7bg7ejup3xxo" path="res://Enemigos/cacao_izq.gd" id="1_5ah7d"]
+[ext_resource type="Texture2D" uid="uid://drk1bc3hr23x1" path="res://img/Enemigos/cacao1.png" id="1_ta0gl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyt8m"]
+radius = 27.0
+height = 100.0
+
+[node name="cacao_izq" type="Area2D" groups=["cacao"]]
+script = ExtResource("1_5ah7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uyt8m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_ta0gl")

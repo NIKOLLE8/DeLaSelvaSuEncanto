@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbxukdqj3xcyd"]
+
+[ext_resource type="Script" uid="uid://cu373mfoq5nkk" path="res://Enemigos/chullachaqui.gd" id="1_fwpyy"]
+[ext_resource type="Texture2D" uid="uid://bg43qvryhu5of" path="res://img/Enemigos/chullachaqui.png" id="1_jqvyo"]
+[ext_resource type="AudioStream" uid="uid://xwvp3jrbnhdo" path="res://img/Fondos/tunche - chulla  piedra y cacao.mp3" id="3_vjqa6"]
+[ext_resource type="AudioStream" uid="uid://cm5aa1c2umwsh" path="res://img/Fondos/chullachaqui-molesto.mp3" id="4_2xind"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikj5u"]
+size = Vector2(189, 231)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nau62"]
+radius = 91.0
+height = 276.0
+
+[node name="chullachaqui" type="CharacterBody2D"]
+script = ExtResource("1_fwpyy")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemigo"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(265.5, 66.5)
+shape = SubResource("RectangleShape2D_ikj5u")
+
+[node name="cacao1" type="Marker2D" parent="."]
+position = Vector2(428, 140)
+
+[node name="cacao2" type="Marker2D" parent="."]
+position = Vector2(107, 144)
+
+[node name="shoot_timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(267, 83)
+shape = SubResource("CapsuleShape2D_nau62")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(267, 43)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_jqvyo")
+
+[node name="molesto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2xind")
+
+[node name="colision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vjqa6")
+volume_db = 24.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

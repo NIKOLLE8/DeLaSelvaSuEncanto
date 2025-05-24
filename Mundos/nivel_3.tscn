@@ -1,0 +1,180 @@
+[gd_scene load_steps=18 format=3 uid="uid://n5776mcwp33j"]
+
+[ext_resource type="Script" uid="uid://0cftlo4u8o4h" path="res://Mundos/LimitMapDer.gd" id="1_fdumr"]
+[ext_resource type="Script" uid="uid://kl328a3qny2m" path="res://Mundos/LimiteDer.gd" id="2_8qclk"]
+[ext_resource type="Texture2D" uid="uid://dj7655l5j4lwd" path="res://img/Shipi/Imagen_de_WhatsApp_2024-07-06_a_las_21.15.11_f1d6335a-removebg-preview.png" id="3_lc4us"]
+[ext_resource type="Texture2D" uid="uid://bps8m7dhemtfk" path="res://img/Fondos/escenario_motelito.jpg" id="4_wixdu"]
+[ext_resource type="Texture2D" uid="uid://n1aavjhnpfe2" path="res://img/Fondos/hoja.png" id="5_eijcr"]
+[ext_resource type="Script" uid="uid://kcb5uxgh0l0p" path="res://Mundos/NIVEL3.gd" id="5_nauk8"]
+[ext_resource type="Texture2D" uid="uid://crdxj77rspdwl" path="res://img/Fondos/serpiente.png" id="6_cbrpg"]
+[ext_resource type="Script" uid="uid://ccwi4jst8ad55" path="res://Mundos/Puntos3.gd" id="6_f0u5u"]
+[ext_resource type="PackedScene" uid="uid://bjwk2hawnhn8i" path="res://Jugador/flechita.tscn" id="7_n62e0"]
+[ext_resource type="PackedScene" uid="uid://ddii2p3ivyk2a" path="res://Jugador/flechita_izq.tscn" id="8_b3lja"]
+[ext_resource type="PackedScene" uid="uid://heykvxrg7jig" path="res://Jugador/shipi.tscn" id="9_38dmv"]
+[ext_resource type="PackedScene" uid="uid://iivifkpq3ewc" path="res://Enemigos/motelito.tscn" id="10_gebyi"]
+[ext_resource type="PackedScene" uid="uid://b2krioj4qbt1v" path="res://Enemigos/toxico.tscn" id="11_nbguf"]
+[ext_resource type="AudioStream" uid="uid://bjci0w5g2kaji" path="res://img/Fondos/nivel_3.mp3" id="14_qrvyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by0ak"]
+size = Vector2(18, 738)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbatt"]
+size = Vector2(18, 757)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kkdj"]
+size = Vector2(2916, 53.5)
+
+[node name="nivel3" type="Node"]
+
+[node name="LimitMapIzq" type="Area2D" parent="."]
+script = ExtResource("1_fdumr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitMapIzq" groups=["limite"]]
+position = Vector2(20, 363)
+shape = SubResource("RectangleShape2D_by0ak")
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="LimiteDer" type="Area2D" parent="."]
+position = Vector2(1080, -99)
+script = ExtResource("2_8qclk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteDer" groups=["limite"]]
+position = Vector2(-11, 429)
+shape = SubResource("RectangleShape2D_wbatt")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(52.75, 54.75)
+scale = Vector2(0.246462, 0.225636)
+texture = ExtResource("3_lc4us")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI"]
+position = Vector2(125, 54)
+scale = Vector2(0.242925, 0.225636)
+texture = ExtResource("3_lc4us")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI"]
+position = Vector2(197, 54)
+scale = Vector2(0.25, 0.226)
+texture = ExtResource("3_lc4us")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI"]
+position = Vector2(266, 53)
+scale = Vector2(0.226, 0.226)
+texture = ExtResource("3_lc4us")
+
+[node name="Sprite2D5" type="Sprite2D" parent="UI"]
+position = Vector2(332, 55)
+scale = Vector2(0.226, 0.226)
+texture = ExtResource("3_lc4us")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(653, 690.25)
+shape = SubResource("RectangleShape2D_6kkdj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(537.5, 349)
+scale = Vector2(0.804258, 1.01225)
+texture = ExtResource("4_wixdu")
+
+[node name="panel" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = 667.0
+offset_right = 1082.0
+offset_bottom = 726.0
+color = Color(0, 0, 0, 1)
+
+[node name="NIVEL" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 10.0
+offset_right = 228.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 20
+text = "NIVEL"
+script = ExtResource("5_nauk8")
+
+[node name="Puntos" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 10.0
+offset_right = 920.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 20
+text = "PUNTUACIÓN"
+script = ExtResource("6_f0u5u")
+
+[node name="autores" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 24.0
+offset_right = 724.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 15
+text = "JULIO PEREZ   -   NIKOLLE ACUÑA"
+
+[node name="autores2" type="Label" parent="panel"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 4.0
+offset_right = 560.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 15
+text = "HECHO POR"
+
+[node name="Sprite2D3" type="Sprite2D" parent="panel"]
+position = Vector2(1056, 42.5)
+scale = Vector2(0.519999, 0.575581)
+texture = ExtResource("5_eijcr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="panel"]
+position = Vector2(40.125, 34)
+scale = Vector2(0.433263, 0.561644)
+texture = ExtResource("6_cbrpg")
+
+[node name="flechita" parent="." instance=ExtResource("7_n62e0")]
+position = Vector2(638, -100)
+
+[node name="flechita_izq" parent="." instance=ExtResource("8_b3lja")]
+position = Vector2(301, -88)
+
+[node name="Shipi" parent="." instance=ExtResource("9_38dmv")]
+position = Vector2(530, 185)
+
+[node name="motelito" parent="." instance=ExtResource("10_gebyi")]
+position = Vector2(1303, 337)
+distanciaMov = -250
+retrasoInicial = 2.0
+saber = 1
+
+[node name="toxico" parent="." instance=ExtResource("11_nbguf")]
+position = Vector2(468, -144)
+
+[node name="motelito2" parent="." instance=ExtResource("10_gebyi")]
+position = Vector2(-188, 356)
+distanciaMov = 200
+retrasoInicial = 8.0
+saber = 2
+
+[node name="motelito3" parent="." instance=ExtResource("10_gebyi")]
+position = Vector2(-532, 196)
+distanciaMov = 600
+retrasoInicial = 14.0
+saber = 4
+
+[node name="motelito4" parent="." instance=ExtResource("10_gebyi")]
+position = Vector2(1740, 112)
+distanciaMov = -750
+retrasoInicial = 10.0
+saber = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_qrvyh")
+autoplay = true
+
+[connection signal="area_entered" from="LimitMapIzq" to="LimitMapIzq" method="_on_area_entered"]
+[connection signal="area_entered" from="LimiteDer" to="LimiteDer" method="_on_area_entered"]

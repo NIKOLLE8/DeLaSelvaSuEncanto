@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://iivifkpq3ewc"]
+
+[ext_resource type="Texture2D" uid="uid://brmusgfwpagyd" path="res://img/Enemigos/motelito.png" id="1_a5vf4"]
+[ext_resource type="Script" uid="uid://cythby82qou7r" path="res://Enemigos/motelito.gd" id="1_s4d1x"]
+[ext_resource type="AudioStream" uid="uid://cqw46ckrifq6w" path="res://img/Fondos/motelito-muerte.mp3" id="3_2wopl"]
+[ext_resource type="AudioStream" uid="uid://b4k5dbc7dt3if" path="res://img/Fondos/tottuga-escupir.mp3" id="4_cojl8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c78ch"]
+radius = 152.118
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ijkg"]
+radius = 164.076
+
+[node name="motelito" type="CharacterBody2D"]
+script = ExtResource("1_s4d1x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, 4)
+shape = SubResource("CircleShape2D_c78ch")
+
+[node name="toxico1" type="Marker2D" parent="."]
+position = Vector2(-214, 94)
+
+[node name="toxico2" type="Marker2D" parent="."]
+position = Vector2(229, 99)
+
+[node name="shoot_timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_a5vf4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+shape = SubResource("CircleShape2D_3ijkg")
+
+[node name="colision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2wopl")
+
+[node name="escupir" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cojl8")
+volume_db = 24.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

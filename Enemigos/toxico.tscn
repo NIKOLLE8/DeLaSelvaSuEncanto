@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2krioj4qbt1v"]
+
+[ext_resource type="Texture2D" uid="uid://drgs31ga0x45f" path="res://img/Enemigos/toxico.png" id="1_1ca5n"]
+[ext_resource type="Script" uid="uid://dpfd3h1fi0pe6" path="res://Enemigos/toxico.gd" id="1_yvigl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w22p1"]
+radius = 25.9615
+
+[node name="toxico" type="Area2D" groups=["toxico"]]
+script = ExtResource("1_yvigl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w22p1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_1ca5n")

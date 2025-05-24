@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://byiufix7ysxga"]
+
+[ext_resource type="Script" uid="uid://86gbfxmx5e6k" path="res://Mundos/index.gd" id="1_64unm"]
+[ext_resource type="Texture2D" uid="uid://wy045lvp71nn" path="res://img/Fondos/jugar.png" id="1_b5tni"]
+[ext_resource type="Texture2D" uid="uid://bcdw54erpbp47" path="res://img/Fondos/jajajja.jpg" id="2_rih6j"]
+[ext_resource type="VideoStream" uid="uid://dahq28p6jgi2d" path="res://img/Fondos/index.ogv" id="2_uo7mt"]
+[ext_resource type="Texture2D" uid="uid://b3ko846fcm7rh" path="res://img/Fondos/salir.png" id="3_d2qu7"]
+[ext_resource type="AudioStream" uid="uid://dmomwsm7ehlpw" path="res://img/Fondos/intrada.mp3" id="6_sl1en"]
+
+[node name="Node2D" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_64unm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(538.5, 357)
+scale = Vector2(0.559896, 0.668519)
+texture = ExtResource("2_rih6j")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = -1
+anchor_left = -0.245128
+anchor_top = -0.703077
+anchor_right = 0.995513
+anchor_bottom = 0.695385
+offset_left = 22.0
+offset_top = -19.0
+offset_right = 1942.0
+offset_bottom = 1069.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.538, 0.7)
+size_flags_vertical = 2
+stream = ExtResource("2_uo7mt")
+autoplay = true
+metadata/_edit_use_anchors_ = true
+
+[node name="jugar" type="Button" parent="."]
+custom_minimum_size = Vector2(1, 1)
+offset_left = 312.0
+offset_top = 405.0
+offset_right = 1029.0
+offset_bottom = 561.0
+scale = Vector2(0.7, 0.7)
+icon = ExtResource("1_b5tni")
+flat = true
+
+[node name="salir" type="Button" parent="."]
+offset_left = 309.0
+offset_top = 505.0
+offset_right = 1026.0
+offset_bottom = 690.0
+scale = Vector2(0.7, 0.7)
+icon = ExtResource("3_d2qu7")
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_sl1en")
+autoplay = true
+
+[connection signal="pressed" from="jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="salir" to="." method="_on_salir_pressed"]

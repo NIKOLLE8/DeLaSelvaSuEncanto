@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccys2jyy0yxb"]
+
+[ext_resource type="PackedScene" uid="uid://heykvxrg7jig" path="res://Jugador/shipi.tscn" id="1_l8k0y"]
+[ext_resource type="Texture2D" uid="uid://b232q7s5h0gm5" path="res://img/Fondos/escenario_tunche.jpeg" id="2_4f7s0"]
+[ext_resource type="PackedScene" uid="uid://bjwk2hawnhn8i" path="res://Jugador/flechita.tscn" id="3_dc5fu"]
+[ext_resource type="PackedScene" uid="uid://ddii2p3ivyk2a" path="res://Jugador/flechita_izq.tscn" id="4_dwogb"]
+[ext_resource type="PackedScene" uid="uid://c8icihd4ipt0e" path="res://Enemigos/bala.tscn" id="5_8losr"]
+[ext_resource type="PackedScene" uid="uid://bw8s7w6m8d81b" path="res://Enemigos/bala_izq.tscn" id="6_n4p0w"]
+[ext_resource type="PackedScene" uid="uid://c5xffcvhp1ro1" path="res://Enemigos/tunche.tscn" id="7_rchb1"]
+[ext_resource type="Texture2D" uid="uid://dj7655l5j4lwd" path="res://img/Shipi/Imagen_de_WhatsApp_2024-07-06_a_las_21.15.11_f1d6335a-removebg-preview.png" id="8_x8hi4"]
+[ext_resource type="Script" path="res://Mundos/LimitMapDer.gd" id="9_0mg8x"]
+[ext_resource type="Script" path="res://Mundos/LimiteDer.gd" id="10_pxkge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn36b"]
+size = Vector2(2248, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuo43"]
+size = Vector2(26, 736)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8kpv"]
+size = Vector2(28.5, 757)
+
+[node name="Mundo" type="Node"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(490, 686)
+shape = SubResource("RectangleShape2D_kn36b")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(539, 334.547)
+scale = Vector2(0.834521, 0.967027)
+texture = ExtResource("2_4f7s0")
+
+[node name="flechita" parent="." instance=ExtResource("3_dc5fu")]
+position = Vector2(753, -186)
+rotation = -0.0193085
+
+[node name="bala" parent="." instance=ExtResource("5_8losr")]
+position = Vector2(909, -285)
+
+[node name="bala2" parent="." instance=ExtResource("6_n4p0w")]
+position = Vector2(153, -192)
+
+[node name="tunche2" parent="." instance=ExtResource("7_rchb1")]
+position = Vector2(-492, -68)
+distanciaMov = 600
+retrasoInicial = 3.0
+
+[node name="tunche" parent="." instance=ExtResource("7_rchb1")]
+position = Vector2(1123, -98)
+distanciaMov = -400
+retrasoInicial = 7.0
+
+[node name="flechita_izq" parent="." instance=ExtResource("4_dwogb")]
+position = Vector2(430, -185)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(52.75, 54.75)
+scale = Vector2(0.246462, 0.225636)
+texture = ExtResource("8_x8hi4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI"]
+position = Vector2(125, 54)
+scale = Vector2(0.242925, 0.225636)
+texture = ExtResource("8_x8hi4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="UI"]
+position = Vector2(197, 54)
+scale = Vector2(0.25, 0.226)
+texture = ExtResource("8_x8hi4")
+
+[node name="Sprite2D4" type="Sprite2D" parent="UI"]
+position = Vector2(266, 53)
+scale = Vector2(0.226, 0.226)
+texture = ExtResource("8_x8hi4")
+
+[node name="Sprite2D5" type="Sprite2D" parent="UI"]
+position = Vector2(332, 55)
+scale = Vector2(0.226, 0.226)
+texture = ExtResource("8_x8hi4")
+
+[node name="Shipi" parent="." instance=ExtResource("1_l8k0y")]
+position = Vector2(503, 232)
+
+[node name="LimitMapIzq" type="Area2D" parent="."]
+script = ExtResource("9_0mg8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitMapIzq" groups=["limite"]]
+position = Vector2(3, 358)
+shape = SubResource("RectangleShape2D_wuo43")
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="LimiteDer" type="Area2D" parent="."]
+position = Vector2(1080, -99)
+script = ExtResource("10_pxkge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteDer" groups=["limite"]]
+position = Vector2(-3.75, 450)
+shape = SubResource("RectangleShape2D_g8kpv")
+
+[connection signal="area_entered" from="flechita" to="LimitMapIzq" method="_on_flechita_area_entered"]
+[connection signal="area_entered" from="flechita_izq" to="LimiteDer" method="_on_flechita_izq_area_entered"]
+[connection signal="area_entered" from="LimiteDer" to="flechita" method="_on_limite_der_area_entered"]

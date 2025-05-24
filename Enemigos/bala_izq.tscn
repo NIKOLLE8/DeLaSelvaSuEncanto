@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8s7w6m8d81b"]
+
+[ext_resource type="Script" uid="uid://bvii20xviphda" path="res://Enemigos/bala_izq.gd" id="1_ur4r5"]
+[ext_resource type="Texture2D" uid="uid://erngqssecrey" path="res://img/Enemigos/piedra.png" id="2_jv3xs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kytyt"]
+size = Vector2(41, 33)
+
+[node name="bala" type="Area2D" groups=["bala"]]
+position = Vector2(500, 307)
+script = ExtResource("1_ur4r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["bala"]]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_kytyt")
+
+[node name="bala" type="Sprite2D" parent="."]
+scale = Vector2(0.0923333, 0.0936666)
+texture = ExtResource("2_jv3xs")
