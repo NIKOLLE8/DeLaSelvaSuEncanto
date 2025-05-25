@@ -44,3 +44,4 @@ Es un videojuego desarrollado con el motor **Godot** que rinde homenaje a la riq
 2. Abre el proyecto en Godot.
 3. Ejecuta la escena principal (`index.tscn`).
 
+![selva](https://github.com/user-attachments/assets/72341acb-e217-465d-af22-c246770233b5)
